@@ -32,10 +32,17 @@
 		watch:{
 			tab(newVal){
 				if(newVal.length == 0) return;
+				this.listCatchData = {};
+				this.load = {};
 				this.getList(this.activeIndex);
 			}
 		},
 		created(){
+			uni.$on('update-article',()=>{
+				this.listCatchData = {};
+				this.load = {};
+				this.getList(this.activeIndex);
+			})
 		},
 		methods:{
 			change(e){

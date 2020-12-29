@@ -3,6 +3,8 @@
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "首页",
   "usingComponents": {
-    "navbar": "/components/navbar/navbar"
+    "navbar": "/components/navbar/navbar",
+    "list-scroll": "/components/list-scroll/list-scroll",
+    "list-card": "/components/list-card/list-card"
   }
 }

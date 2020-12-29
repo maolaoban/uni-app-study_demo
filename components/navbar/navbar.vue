@@ -17,7 +17,9 @@
 					</view>
 				</view>
 				<view v-else class="navbar-search">
-					<input class="navbar-search_text" type="text" value="" placeholder="请输入您要搜索的内容..."/>
+					<input class="navbar-search_text" type="text" v-model="val" placeholder="请输入您要搜索的内容..."
+						@input="inputChange"
+					/>
 				</view>
 			</view>
 		</view>
@@ -29,6 +31,10 @@
 	import '../../common/css/icons.css';
 	export default {
 		props:{
+			value:{
+				type:[String,Number],
+				default:''
+			},
 			isSearch:{
 				type:Boolean,
 				default:false
@@ -38,7 +44,13 @@
 			return {
 				statusBarHeight: 20,
 				navBarHeight: 45,
-				windowWidth:375
+				windowWidth:375,
+				val:''
+			}
+		},
+		watch:{
+			value(newVal){
+				this.val = newVal;
 			}
 		},
 		created(){
@@ -74,9 +86,16 @@
 				}
 			},
 			goBack(){
-				uni.navigateBack({
-					delta:1
+				// uni.navigateBack({
+				// 	delta:1
+				// })
+				uni.switchTab({
+					url:'../../pages/tarbar/index/index'
 				})
+			},
+			inputChange(e){
+				const {value} = e.detail;
+				this.$emit("inputChange",value);
 			}
 		}
 	}
@@ -110,6 +129,7 @@
 						margin-right: 10px;
 					}
 					.navbar-search_text{
+						width: 100%;
 						font-size: 12px;
 						color:#999;
 					}

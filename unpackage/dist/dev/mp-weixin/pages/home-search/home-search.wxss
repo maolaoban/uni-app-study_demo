@@ -42,7 +42,6 @@ page {
   -webkit-flex-direction: column;
           flex-direction: column;
   felx: 1;
-  border: 1px solid red;
 }
 .home .label-box {
   background-color: #FFFFFF;
@@ -85,5 +84,13 @@ page {
   border: 1px solid #666;
   font-size: 14px;
   color: #666;
+}
+.home .label-box .no-data {
+  height: 200px;
+  line-height: 200px;
+  width: 100%;
+  text-align: center;
+  color: #666;
+  background-color: #f5f5f5;
 }
 

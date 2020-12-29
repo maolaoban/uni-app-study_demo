@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<!-- 基础卡片 -->
-		<view class="listcard" v-if="item.mode === 'base'">
+		<view class="listcard" v-if="item.mode === 'base'" @click="open">
 			<view class="listcard-image">
 				<image :src="item.cover[0]" mode="aspectFill"></image>
 			</view>
@@ -25,7 +25,7 @@
 			</view>
 		</view>
 		<!-- 多图 -->
-		<view class="listcard mode-column" v-if="item.mode === 'image'">
+		<view class="listcard mode-column" v-if="item.mode === 'image'" @click="open">
 			<view class="listcard-content">
 				<view class="listcard-content_title">
 					<text>
@@ -51,7 +51,7 @@
 			</view>
 		</view>
 		<!-- 大图 -->
-		<view class="listcard mode-image" v-if="item.mode === 'column'">
+		<view class="listcard mode-image" v-if="item.mode === 'column'" @click="open">
 			<view class="listcard-image">
 				<image :src="item.cover[0]" mode="aspectFill"></image>
 			</view>
@@ -93,6 +93,22 @@
 			return {
 				
 			};
+		},
+		methods:{
+			open(){
+				const params = {
+					_id:this.item._id,
+					title:this.item.title,
+					author:this.item.author,
+					create_time:this.item.create_time,
+					thumbs_up_count:this.item.thumbs_up_count,
+					browse_count:this.item.browse_count
+				}
+				console.log(params);
+				uni.navigateTo({
+					url:'/pages/home-detail/home-detail?params='+JSON.stringify(params)
+				})
+			}
 		}
 	}
 </script>
