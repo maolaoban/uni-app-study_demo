@@ -3,7 +3,12 @@
     "pages/tarbar/index/index",
     "pages/tarbar/follow/follow",
     "pages/tarbar/my/my",
-    "pages/home-search/home-search"
+    "pages/home-search/home-search",
+    "pages/home-label/home-label",
+    "pages/home-detail/home-detail",
+    "pages/detail-comment/detail-comment",
+    "pages/my-article/my-article",
+    "pages/feedback/feedback"
   ],
   "subPackages": [],
   "window": {
@@ -38,5 +43,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap16.json"
+  "sitemapLocation": "sitemap37.json"
 }

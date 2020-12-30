@@ -94,13 +94,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   navbar: function() {
-    return Promise.all(/*! import() | components/navbar/navbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/navbar/navbar")]).then(__webpack_require__.bind(null, /*! @/components/navbar/navbar.vue */ 47))
+    return Promise.all(/*! import() | components/navbar/navbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/navbar/navbar")]).then(__webpack_require__.bind(null, /*! @/components/navbar/navbar.vue */ 88))
   },
   tab: function() {
-    return __webpack_require__.e(/*! import() | components/tab/tab */ "components/tab/tab").then(__webpack_require__.bind(null, /*! @/components/tab/tab.vue */ 55))
+    return __webpack_require__.e(/*! import() | components/tab/tab */ "components/tab/tab").then(__webpack_require__.bind(null, /*! @/components/tab/tab.vue */ 96))
   },
   list: function() {
-    return __webpack_require__.e(/*! import() | components/list/list */ "components/list/list").then(__webpack_require__.bind(null, /*! @/components/list/list.vue */ 62))
+    return __webpack_require__.e(/*! import() | components/list/list */ "components/list/list").then(__webpack_require__.bind(null, /*! @/components/list/list.vue */ 103))
   }
 }
 var render = function() {
@@ -140,26 +140,27 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-//easyCom components/组件名/组件名.vue 局部引入
-// import navbar from '@/components/navbar/navbar.vue'
-var _default = {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ 18);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+{
   // components:{
   // 	navbar
   // },
@@ -170,19 +171,30 @@ var _default = {
       activeIndex: 0 };
 
   },
-  onLoad: function onLoad() {
-    this.getLabel();
+  computed: _objectSpread({},
+  (0, _vuex.mapState)(['userInfo'])),
+
+  watch: {
+    userInfo: function userInfo(newVale) {
+      this.getLabel();
+    } },
+
+  onLoad: function onLoad() {var _this = this;
+    uni.$on('labelChange', function () {
+      _this.tabList = [];
+      _this.tabIndex = 0;
+      _this.activeIndex = 0;
+      _this.getLabel();
+    });
   },
   methods: {
-    getLabel: function getLabel() {var _this = this;
-      this.$api.get_label({
-        name: 'get_label' }).
-      then(function (res) {var
+    getLabel: function getLabel() {var _this2 = this;
+      this.$api.get_label().then(function (res) {var
         data = res.data;
         data.unshift({
           name: '全部' });
 
-        _this.tabList = data;
+        _this2.tabList = data;
       });
     },
     tab: function tab(_ref) {var data = _ref.data,index = _ref.index;
@@ -194,6 +206,7 @@ var _default = {
       this.tabIndex = current;
       this.activeIndex = current;
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

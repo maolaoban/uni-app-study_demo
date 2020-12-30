@@ -85,7 +85,7 @@ page {
   font-size: 14px;
   color: #666;
 }
-.home .label-box .no-data {
+.no-data {
   height: 200px;
   line-height: 200px;
   width: 100%;

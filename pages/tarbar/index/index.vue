@@ -17,6 +17,7 @@
 <script>
 	//easyCom components/组件名/组件名.vue 局部引入
 	// import navbar from '@/components/navbar/navbar.vue'
+	import {mapState} from 'vuex';
 	export default {
 		// components:{
 		// 	navbar
@@ -28,8 +29,15 @@
 				activeIndex:0
 			}
 		},
+		computed:{
+			...mapState(['userInfo'])
+		},
+		watch:{
+			userInfo(newVale){
+				this.getLabel();
+			}
+		},
 		onLoad() {
-			this.getLabel();
 			uni.$on('labelChange',()=>{
 				this.tabList = [];
 				this.tabIndex = 0;

@@ -4,7 +4,8 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 const store = new Vuex.Store({
 	state:{
-		historyList:uni.getStorageSync("_history") || []
+		historyList:uni.getStorageSync("_history") || [],
+		userInfo:uni.getStorageSync("userInfo") || {}
 	},
 	mutations:{
 		SET_HISTORY_LIST(state,history){
@@ -12,6 +13,9 @@ const store = new Vuex.Store({
 		},
 		CLEAR_HISTORY_LIST(state){
 			state.historyList = [];
+		},
+		SET_USER_INFO(state,userInfo){
+			state.userInfo = userInfo;
 		}
 	},
 	actions:{
@@ -25,6 +29,10 @@ const store = new Vuex.Store({
 			// uni.setStorageSync("_history",[]);
 			uni.removeStorageSync("_history");
 			commit("CLEAR_HISTORY_LIST");
+		},
+		set_userInfo({commit},userInfo){
+			uni.setStorageSync('userInfo',userInfo);
+			commit("SET_USER_INFO",userInfo);
 		}
 	}
 })

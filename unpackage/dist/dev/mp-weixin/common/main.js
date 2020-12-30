@@ -93,8 +93,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 {
-  onLaunch: function onLaunch() {
+  onLaunch: function onLaunch() {var _this = this;
     console.log('App Launch');
+    this.$api.get_user({
+      user_id: '5fd06e49fb0f850001892027' }).
+    then(function (res) {
+      console.log(res);var
+      data = res.data;
+      _this.$store.dispatch('set_userInfo', data);
+    });
   },
   onShow: function onShow() {
     console.log('App Show');
